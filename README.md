@@ -1,10 +1,12 @@
 # cs-tutorial-kafka
 
-# Prereqs
+## Prereqs
 astro cli 
 
 python3 environment
 
+
+## Setup
 
 pull git repo 
 
