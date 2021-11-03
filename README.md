@@ -23,6 +23,9 @@ then activate venv with
 
 source venv/bin/activate 	
 
+start python script with(this script will continueally run, to stop press ctrl+c):
+
+python output_messages.py
 
 navigate in you web browser to:
 http://localhost:9021/clusters
