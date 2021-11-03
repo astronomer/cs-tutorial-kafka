@@ -2,36 +2,37 @@
 
 # Prereqs
 astro cli 
+
 python3 environment
 
 
 pull git repo 
 
-cd cs-tutorial-kafka 
-
+```cd cs-tutorial-kafka ```
 
 run:
 
-
+```
 astro dev start
-
+```
 run this to create the "users" topic in kafka:
-
+```
 docker-compose exec broker kafka-topics \                                               
   --create \
   --bootstrap-server broker:29092 \
   --replication-factor 1 \
   --partitions 1 \
   --topic users
-
-
+```
+Run this to install the nessacery local packages
+```
 pip install -r pip install -r local_req.txt
-
+```
 
 start python script with(this script will continueally run, to stop press ctrl+c) This needs to be running for the process to work:
-
+```
 python output_messages.py
-
+```
 navigate in you web browser to see the Kafka Control Center:
 http://localhost:9021/clusters
 
