@@ -23,7 +23,7 @@ then activate venv with
 
 source venv/bin/activate 	
 
-start python script with(this script will continueally run, to stop press ctrl+c):
+start python script with(this script will continueally run, to stop press ctrl+c) This needs to be running for the process to work:
 
 python output_messages.py
 
