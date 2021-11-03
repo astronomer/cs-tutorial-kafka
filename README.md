@@ -19,7 +19,7 @@ astro dev start
 ```
 run this to create the "users" topic in kafka:
 ```
-docker-compose exec broker kafka-topics \                                               
+docker-compose exec broker kafka-topics \
   --create \
   --bootstrap-server broker:29092 \
   --replication-factor 1 \
