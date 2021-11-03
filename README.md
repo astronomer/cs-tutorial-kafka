@@ -58,5 +58,5 @@ set key and value values- Thes must both be in JSON form
 
 select produce
 
-you should see out from your output_message.py script that is running 
-example DAG is trigger and you see the message out in the log of the get message task
+you should see output from your output_message.py script that is running 
+example_dag is triggered and you should see the kafka message in the log of the get_message task
