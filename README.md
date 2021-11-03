@@ -1,7 +1,13 @@
 # cs-tutorial-kafka
 
+# Prereqs
+astro cli 
+python3 environment
 
-pull git repo && cd cs-tutorial-kafka 
+
+pull git repo 
+
+cd cs-tutorial-kafka 
 
 
 run:
@@ -19,15 +25,14 @@ docker-compose exec broker kafka-topics \
   --topic users
 
 
-then activate venv with 
+pip install -r pip install -r local_req.txt
 
-source venv/bin/activate 	
 
 start python script with(this script will continueally run, to stop press ctrl+c) This needs to be running for the process to work:
 
 python output_messages.py
 
-navigate in you web browser to:
+navigate in you web browser to see the Kafka Control Center:
 http://localhost:9021/clusters
 
 select the controlcenter.cluster
