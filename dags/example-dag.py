@@ -14,20 +14,11 @@ AIRFLOW_PASSWORD = 'admin'
 AIRFLOW_WEBSERVER_HOST = 'webserver'
 AIRFLOW_WEBSERVER_PORT = '8080'
 
-def get_varible(run_id , **kwargs):
+def print_message( **kwargs):
 
     #This pulls the varible where we stored the kafka message
-    print("conf:  "+kwargs['dag_run'].conf['message'])
-    print("Variable: "+Variable.get(run_id))
-def my_clean_up_function(run_id , **kwargs):
-    #This deletes the Variable after we have pulled the kafka message from it in previous task.
+    print(f"Message:{kwargs['dag_run'].conf['message']}")
 
-    var_return = requests.delete(
-        f"http://{AIRFLOW_WEBSERVER_HOST}:{AIRFLOW_WEBSERVER_PORT}/api/v1/variables/{run_id}",
-        headers=headers,
-        auth=(AIRFLOW_USERNAME, AIRFLOW_PASSWORD)
-    )
-    print(var_return)
 
 
 # Default settings applied to all tasks
@@ -51,16 +42,15 @@ with DAG('example_dag',
 
 
     t1 = PythonOperator(
-        task_id='get_message',
-        python_callable=get_varible,
+        task_id='python_ex',
+        python_callable=print_message,
         provide_context=True,
 
     )
+    t2= BashOperator(
+        task_id="bash_ex",
+        bash_command='echo "{{ dag_run.conf["message"] }}"'
 
-    t2 = PythonOperator(
-        task_id='clean_up',
-        python_callable=my_clean_up_function,
-        provide_context=True,
     )
 
 

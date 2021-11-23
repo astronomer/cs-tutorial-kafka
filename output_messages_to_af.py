@@ -26,17 +26,11 @@ try:
 
     for message in consumer:
         # This id is attached to the Airflow Varible and Airflow DAGRun, so they can be attached to each other in airflow
-        id = str(uuid.uuid1())
         message_info = f"message_value:{message.value}"
-        var_data = {"key": id,
-                    "value": message_info}
+
         #This REST Call creates a varible in Airflow with the kafka message value. Key of the varible is the id created above
-        var_return = requests.post(
-            f"http://{AIRFLOW_WEBSERVER_HOST}:{AIRFLOW_WEBSERVER_PORT}/api/v1/variables",
-            headers=headers,
-            auth=(AIRFLOW_USERNAME, AIRFLOW_PASSWORD), data=json.dumps(var_data))
+
         data = {
-            "dag_run_id": id,
             "conf":{"message":message_info}
         }
         #This REST Call triggers the DAG Run, The run id is the uuid generated above.
