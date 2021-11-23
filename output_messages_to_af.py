@@ -37,6 +37,7 @@ try:
             auth=(AIRFLOW_USERNAME, AIRFLOW_PASSWORD), data=json.dumps(var_data))
         data = {
             "dag_run_id": id,
+            "conf":{"message":message_info}
         }
         #This REST Call triggers the DAG Run, The run id is the uuid generated above.
         # This allows us to us the run_id to pull the varible during the DAGRun

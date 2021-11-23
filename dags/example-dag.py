@@ -17,9 +17,8 @@ AIRFLOW_WEBSERVER_PORT = '8080'
 def get_varible(run_id , **kwargs):
 
     #This pulls the varible where we stored the kafka message
+    print("conf:  "+kwargs['dag_run'].conf['message'])
     print("Variable: "+Variable.get(run_id))
-    print(kwargs)
-
 def my_clean_up_function(run_id , **kwargs):
     #This deletes the Variable after we have pulled the kafka message from it in previous task.
 
@@ -44,7 +43,7 @@ default_args = {
 with DAG('example_dag',
          start_date=datetime(2021, 10, 31),
          max_active_runs=3,
-         schedule_interval=timedelta(minutes=30),  # https://airflow.apache.org/docs/stable/scheduler.html#dag-runs
+         schedule_interval=None,  # https://airflow.apache.org/docs/stable/scheduler.html#dag-runs
          default_args=default_args,
          catchup=False  # enable if you don't want historical dag runs to run
          ) as dag:
